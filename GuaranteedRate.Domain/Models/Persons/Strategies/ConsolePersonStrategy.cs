@@ -20,7 +20,7 @@ namespace GuaranteedRate.Domain.Models.Persons.Strategies
 
 
         //– sorted by last name, descending.
-        public IEnumerable<IPerson> SetLastNameAction(IPersons persons) => 
+        public IEnumerable<IPerson> SetNameAction(IPersons persons) => 
             persons.GetPersons().OrderByDescending(p => p.LastName);
     }
 }

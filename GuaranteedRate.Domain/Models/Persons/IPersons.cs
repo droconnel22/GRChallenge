@@ -16,5 +16,7 @@ namespace GuaranteedRate.Domain.Models.Persons
         IEnumerable<IPerson> GetByBirthDate();
 
         IEnumerable<IPerson> GetByLastName();
+
+        bool AddPerson(IPerson person);
     }
 }

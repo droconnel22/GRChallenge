@@ -15,7 +15,7 @@ namespace GuaranteedRate.Domain.Builders
             
         }
 
-        public static IParseFromPostBodyHolder Initalize()
+        public static ISetPersonsStrategyHolder Initalize()
         {
             return new PersonsRestBuilder();
         }

@@ -20,5 +20,10 @@ namespace GuaranteedRate.Domain.Factories
             Gender = person.Gender.ToString()
 
         };
+
+        internal static IPerson Create(string model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

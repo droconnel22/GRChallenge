@@ -26,6 +26,6 @@ namespace GuaranteedRate.Domain.Models.Persons.Strategies
 
         public IEnumerable<IPerson> SetBirthDateAction(IPersons persons) => new List<IPerson>();
 
-        public IEnumerable<IPerson> SetLastNameAction(IPersons persons) => new List<IPerson>();
+        public IEnumerable<IPerson> SetNameAction(IPersons persons) => new List<IPerson>();
     }
 }

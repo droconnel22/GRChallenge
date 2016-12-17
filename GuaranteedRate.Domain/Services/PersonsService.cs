@@ -1,5 +1,10 @@
 ﻿using System.Collections.Generic;
+using GuaranteedRate.Domain.Builders;
+using GuaranteedRate.Domain.Builders.Interfaces;
+using GuaranteedRate.Domain.Factories;
 using GuaranteedRate.Domain.Models.Person;
+using GuaranteedRate.Domain.Models.Persons;
+using GuaranteedRate.Domain.Models.Persons.Extensions;
 using GuaranteedRate.Domain.Models.Persons.Strategies;
 using GuaranteedRate.Domain.ViewModels;
 
@@ -7,29 +12,39 @@ namespace GuaranteedRate.Domain.Services
 {
     public class PersonsService : IPersonsService
     {
-        public IPersonsService BuildPerson(string input)
+        private IPersons persons;
+
+        public PersonsService()
         {
-            throw new System.NotImplementedException();
+            this.persons = EmptyPersons.GetInstance;
         }
 
-        public bool AddRecord()
+        public void Initalize()
         {
-            throw new System.NotImplementedException();
+            this.persons = 
+                PersonsRestBuilder
+                .Initalize()
+                .SetStrategyForPersons(new RestApiPersonsStrategy())
+                .Build();
         }
 
-        public PersonsViewModel GetRecordsByGender()
-        {
-            throw new System.NotImplementedException();
-        }
+        public bool AddRecord(string model) => 
+            this.persons.AddPerson(PersonFactory.Create(model));
+            
 
-        public PersonsViewModel GetRecordsByBirthDate()
-        {
-            throw new System.NotImplementedException();
-        }
+        public PersonsViewModel GetRecordsByGender() =>
+            this.persons
+                .GetByGender()
+                .ToViewModel();
 
-        public PersonsViewModel GetRecordsByName()
-        {
-            throw new System.NotImplementedException();
-        }
+        public PersonsViewModel GetRecordsByBirthDate() =>
+            this.persons
+                .GetByBirthDate()
+                .ToViewModel();
+
+        public PersonsViewModel GetRecordsByName() => 
+            this.persons
+            .GetByLastName()
+            .ToViewModel();
     }
 }

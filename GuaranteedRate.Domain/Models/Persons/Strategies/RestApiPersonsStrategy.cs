@@ -16,7 +16,10 @@ namespace GuaranteedRate.Domain.Models.Persons.Strategies
             persons.GetPersons().OrderBy(p => p.DateoFBirth);
 
         //returns records sorted by name (??? -> combined? or First Name)
-        public IEnumerable<IPerson> SetLastNameAction(IPersons persons) =>
-            persons.GetPersons().OrderBy(p => p.FirstName);
+        public IEnumerable<IPerson> SetNameAction(IPersons persons) =>
+            persons.GetPersons()
+              .GroupBy(p => p.LastName + ", " + p.FirstName)
+              .OrderBy(p => p.Key)
+              .SelectMany(p => p);
     }
 }

@@ -49,6 +49,7 @@
     <Compile Include="Builders\PersonsRestBuilder.cs" />
     <Compile Include="Factories\PersonFactory.cs" />
     <Compile Include="Factories\ProcessFileFactory.cs" />
+    <Compile Include="Models\Persons\EmptyPersons.cs" />
     <Compile Include="Models\Persons\Extensions\PersonsExtensions.cs" />
     <Compile Include="Models\Persons\IPersons.cs" />
     <Compile Include="Models\Persons\Persons.cs" />

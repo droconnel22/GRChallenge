@@ -14,6 +14,6 @@ namespace GuaranteedRate.Domain.Models.Persons.Strategies
 
         IEnumerable<IPerson> SetBirthDateAction(IPersons persons);
 
-        IEnumerable<IPerson> SetLastNameAction(IPersons persons);
+        IEnumerable<IPerson> SetNameAction(IPersons persons);
     }
 }

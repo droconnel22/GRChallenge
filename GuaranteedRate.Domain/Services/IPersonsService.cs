@@ -9,9 +9,9 @@ namespace GuaranteedRate.Domain.Services
 {
     public interface IPersonsService
     {
-        IPersonsService BuildPerson(string input);
-        //todo think about how to use builder...
-        bool AddRecord();
+        void Initalize();
+     
+        bool AddRecord(string model);
 
         PersonsViewModel GetRecordsByGender();
 
