@@ -7,12 +7,13 @@ using GuaranteedRate.Domain.Models.Person;
 
 namespace GuaranteedRate.Domain.Models.Persons.Strategies
 {
-    internal interface IPersonsStrategy
+    public interface IPersonsStrategy
     {
-        Action<IEnumerable<IPerson>> GetByBirthDateCritera { get; }
 
-        Action<IEnumerable<IPerson>> GetByGenderCriteria { get; }
+        IEnumerable<IPerson> SetGenderAction(IPersons persons);
 
-        Action<IEnumerable<IPerson>> GetByLastNameCriteria { get; }
+        IEnumerable<IPerson> SetBirthDateAction(IPersons persons);
+
+        IEnumerable<IPerson> SetLastNameAction(IPersons persons);
     }
 }

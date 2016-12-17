@@ -8,11 +8,16 @@ namespace GuaranteedRate.Domain.ViewModels
 {
    public  class PersonsViewModel
    {
-        public IEnumerable<PersonViewModel> Persons { get; set; }
+       public IEnumerable<PersonViewModel> Persons { get; set; }
 
         public PersonsViewModel()
        {
            this.Persons = new List<PersonViewModel>();
        }
-   }
+
+        public PersonsViewModel(IEnumerable<PersonViewModel> enumerable)
+        {
+            this.Persons = enumerable;
+        }
+    }
 }

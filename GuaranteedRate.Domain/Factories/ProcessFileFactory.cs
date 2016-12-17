@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuaranteedRate.Domain.Builders
+namespace GuaranteedRate.Domain.Factories
 {
-
-    //I should return a new persons
-
-    public interface IPersonsBuilder
+    internal class ProcessFileFactory
     {
+        
     }
 }

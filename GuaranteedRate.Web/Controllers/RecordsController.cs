@@ -22,12 +22,15 @@ namespace GuaranteedRate.Web.Controllers
         [HttpPost]
         [Route("POST")]
         // POST api/records/
-        public IHttpActionResult Post(PersonViewModel viewModel)
+        public IHttpActionResult Post([FromBody] string model)
         {
             try
             {
                 if (!ModelState.IsValid) return this.BadRequest("Model not valid.");
-                return this.personsService.AddRecord(viewModel)
+
+                return this.personsService
+                    .BuildPerson(model)
+                    .AddRecord()
                     ? (IHttpActionResult) this.Ok()
                     : this.BadRequest();
             }

@@ -1,17 +1,9 @@
-﻿The pipe-delimited file lists each record as follows: 
+﻿using GuaranteedRate.Domain.Models.Persons;
 
-LastName | FirstName | Gender | FavoriteColor | DateOfBirth
+namespace GuaranteedRate.Domain.Builders.Interfaces
+{
 
- The comma-delimited file looks like this: 
-
-LastName, FirstName, Gender, FavoriteColor, DateOfBirth
-
- The space-delimited file looks like this: 
-
-LastName FirstName Gender FavoriteColor DateOfBirth
-
-
-
+    //I should return a new persons
 
     /*
         Builder is flexible! we can parse from file 
@@ -26,6 +18,7 @@ LastName FirstName Gender FavoriteColor DateOfBirth
         Add if more persons?
         Build Persons         
         
+       
         A. Console
         
         1.  WithDeliminator (pass char)
@@ -43,7 +36,10 @@ LastName FirstName Gender FavoriteColor DateOfBirth
         4.With Strategy
         5.Build(); => builds person
 
+*/
 
-		I now see the REST and Presenter as two differet APIS, which implement shared components.
-
-
+    public interface IPersonsBuilder
+    {
+        IPersons Build();
+    }
+}
