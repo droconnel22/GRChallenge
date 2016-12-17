@@ -10,6 +10,24 @@ namespace GuaranteedRate.Console
     {
         static void Main(string[] args)
         {
+
+            //var Persons = PersonsBuilder
+            //                   .
+            //                   .
+                               
+            //what is my purpose what am i responsible
+
+            //Loading in files
+            //checking files
+            //generating a  file object to read
+            //handle console output
+
+            /*
+            I expect this...
+
+    */
+
+       
         }
     }
 }
