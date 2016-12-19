@@ -1,51 +1,63 @@
-﻿using GuaranteedRate.Domain.Builders.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using GuaranteedRate.Domain.Builders.Extenstions;
+using GuaranteedRate.Domain.Builders.Interfaces;
+using GuaranteedRate.Domain.Builders.Strategies;
+using GuaranteedRate.Domain.Factories;
+using GuaranteedRate.Domain.Models.Person;
 using GuaranteedRate.Domain.Models.Persons;
 using GuaranteedRate.Domain.Models.Persons.Strategies;
 
 namespace GuaranteedRate.Domain.Builders
 {
     public class PersonsFileBuilder : 
-        ISetDeliminatorHolder,
         IParseFromFileHolder, 
         ISetPersonsStrategyHolder,
         IPersonsBuilder
     {
         private IPersonsStrategy personsStrategy;
 
+        private IProcessFileStrategy _fileStrategy;
+
+        private IEnumerable<IPerson> loadedPersonCollection;
+
         //Control Entry Point.
         private PersonsFileBuilder()
         {
+            this._fileStrategy = new ProcessMultipleFilesStrategy();
             this.personsStrategy = UnInitalizedPersonsStrategy.SetInstance;
+            this.loadedPersonCollection = new List<IPerson>();
+          
         }
 
-        public static IParseFromFileHolder Initalize()
-        {
-             return new PersonsFileBuilder();
-        }
+        public static IParseFromFileHolder Initalize() => new PersonsFileBuilder();
 
-        public IParseFromFileHolder WithDeliminatorForFile(char deliminator)
+        public IParseFromFileHolder SetRecordsFromFileWithDelimiter(string filePath, char deliminator)
         {
-            throw new System.NotImplementedException();
+           if(!File.Exists(filePath)) throw new ArgumentException("File does not exist from " + filePath);
+           this._fileStrategy.AddFilePlan(filePath,deliminator);
+           return this;
         }
-
-        public ISetDeliminatorHolder SetRecordsFromFile(string filePath)
+       
+        public ISetPersonsStrategyHolder LoadFromFiles()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public ISetPersonsStrategyHolder FinishLoadingFiles()
-        {
-            throw new System.NotImplementedException();
+            this.loadedPersonCollection = 
+                this._fileStrategy
+                .ReadAllFiles()
+                .InterpretLineToPerson();
+            return this;
         }
 
         public IPersonsBuilder SetStrategyForPersons(IPersonsStrategy personsStrategy)
         {
-            throw new System.NotImplementedException();
+            //Here we request a reference type. We will not allow building for a null.
+            if(personsStrategy == null) throw new ArgumentNullException(nameof(personsStrategy));
+            this.personsStrategy = personsStrategy;
+            return this;
         }
 
-        public IPersons Build()
-        {
-            throw new System.NotImplementedException();
-        }
+        public IPersons Build() => 
+            new Persons(this.loadedPersonCollection, this.personsStrategy);
     }
 }

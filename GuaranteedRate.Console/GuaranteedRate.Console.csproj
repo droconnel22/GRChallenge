@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PresentationUtility\Presentation.cs" />
-    <Compile Include="PresentationUtility\PresentationExetensions.cs" />
+    <Compile Include="PresentationUtility\PresentationExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

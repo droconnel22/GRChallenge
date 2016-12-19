@@ -9,8 +9,7 @@ namespace GuaranteedRate.Domain.Builders.Interfaces
 {
     public interface IParseFromFileHolder
     {
-        ISetDeliminatorHolder SetRecordsFromFile(string filePath);
+        IParseFromFileHolder SetRecordsFromFileWithDelimiter(string filePath, char delimiter);
 
-        ISetPersonsStrategyHolder FinishLoadingFiles();
-    }
+        ISetPersonsStrategyHolder LoadFromFiles();}
 }

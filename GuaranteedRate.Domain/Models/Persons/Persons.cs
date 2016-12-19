@@ -33,7 +33,7 @@ namespace GuaranteedRate.Domain.Models.Persons
 
         public bool AddPerson(IPerson person)
         {
-            if (person == null) throw new ArgumentNullException(nameof(person));
+            if (person is EmptyPerson) return false;
             this.collection.Add(person);
             return true;
         }

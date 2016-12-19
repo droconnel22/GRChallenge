@@ -40,15 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\Extenstions\BuilderExtensions.cs" />
     <Compile Include="Builders\Interfaces\IParseFromFileHolder.cs" />
     <Compile Include="Builders\Interfaces\IParseFromPostBodyHolder.cs" />
-    <Compile Include="Builders\Interfaces\ISetDeliminatorHolder.cs" />
     <Compile Include="Builders\Interfaces\ISetPersonsStrategyHolder.cs" />
     <Compile Include="Builders\Interfaces\IPersonsBuilder.cs" />
     <Compile Include="Builders\PersonsFileBuilder.cs" />
     <Compile Include="Builders\PersonsRestBuilder.cs" />
+    <Compile Include="Builders\Strategies\IProcessFileStrategy.cs" />
     <Compile Include="Factories\PersonFactory.cs" />
-    <Compile Include="Factories\ProcessFileFactory.cs" />
+    <Compile Include="Builders\Strategies\ProcessMultipleFilesStrategy.cs" />
     <Compile Include="Models\Persons\EmptyPersons.cs" />
     <Compile Include="Models\Persons\Extensions\PersonsExtensions.cs" />
     <Compile Include="Models\Persons\IPersons.cs" />
@@ -57,7 +58,9 @@
     <Compile Include="Models\Persons\Strategies\IPersonsStrategy.cs" />
     <Compile Include="Models\Persons\Strategies\RestApiPersonsStrategy.cs" />
     <Compile Include="Models\Persons\Strategies\UnInitalizedPersonsStrategy.cs" />
+    <Compile Include="Models\Person\EmptyPerson.cs" />
     <Compile Include="Models\Person\IPerson.cs" />
+    <Compile Include="Models\Person\Person.cs" />
     <Compile Include="Models\Utility\Colors.cs" />
     <Compile Include="Models\Utility\Genders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,7 +69,9 @@
     <Compile Include="ViewModels\PersonsViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

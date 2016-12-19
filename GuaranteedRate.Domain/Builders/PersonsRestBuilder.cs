@@ -15,10 +15,7 @@ namespace GuaranteedRate.Domain.Builders
             
         }
 
-        public static ISetPersonsStrategyHolder Initalize()
-        {
-            return new PersonsRestBuilder();
-        }
+        public static ISetPersonsStrategyHolder Initalize() => new PersonsRestBuilder();
 
         public IParseFromPostBodyHolder SetDeliminatorForPostBody(char deliminator)
         {

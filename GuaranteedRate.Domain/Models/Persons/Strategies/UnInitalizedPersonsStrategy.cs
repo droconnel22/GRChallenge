@@ -6,6 +6,7 @@ namespace GuaranteedRate.Domain.Models.Persons.Strategies
 {
     public class UnInitalizedPersonsStrategy : IPersonsStrategy
     {
+        [ThreadStatic]
         private static UnInitalizedPersonsStrategy instance;
 
         //Control Access

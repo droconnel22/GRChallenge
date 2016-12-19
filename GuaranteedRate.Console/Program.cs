@@ -20,19 +20,16 @@ namespace GuaranteedRate.Console
             IPersons persons = 
                 PersonsFileBuilder
                 .Initalize()
-                .SetRecordsFromFile(args[0])
-                .WithDeliminatorForFile(',')
-                .SetRecordsFromFile(args[1])
-                .WithDeliminatorForFile('|')
-                .SetRecordsFromFile(args[2])
-                .WithDeliminatorForFile('_')
-                .FinishLoadingFiles()
+                .SetRecordsFromFileWithDelimiter(args[0], ',')
+                .SetRecordsFromFileWithDelimiter(args[1], '|')
+                .SetRecordsFromFileWithDelimiter(args[2], ' ') 
+                .LoadFromFiles()
                 .SetStrategyForPersons(new ConsolePersonStrategy())
                 .Build();
 
-            persons.GetByGender().PrintRecords();
-            persons.GetByBirthDate().PrintRecords();
-            persons.GetByLastName().PrintRecords();
+            persons.GetByGender().PrintRecords("Sorted By Gender");
+            persons.GetByBirthDate().PrintRecords("Sorted By Birth Date");
+            persons.GetByLastName().PrintRecords("Sorted By Last Name");
             Presentation.PrintClosingText();
         }
     }

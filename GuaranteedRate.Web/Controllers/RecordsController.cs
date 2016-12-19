@@ -12,11 +12,12 @@ namespace GuaranteedRate.Web.Controllers
     [RoutePrefix("records")]
     public class RecordsController : ApiController
     {
-        private IPersonsService personsService;
+        private readonly IPersonsService personsService;
       
+        //Todo: Add DOC
         public RecordsController()
         {
-            
+            personsService = new PersonsService();
         }
 
         [HttpPost]
@@ -29,8 +30,7 @@ namespace GuaranteedRate.Web.Controllers
                 if (!ModelState.IsValid) return this.BadRequest("Model not valid.");
 
                 return this.personsService
-                    .BuildPerson(model)
-                    .AddRecord()
+                    .AddRecord(model)
                     ? (IHttpActionResult) this.Ok()
                     : this.BadRequest();
             }
