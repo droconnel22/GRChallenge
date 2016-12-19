@@ -4,7 +4,7 @@ using GuaranteedRate.Domain.Models.Person;
 
 namespace GuaranteedRate.Domain.Models.Persons.Strategies
 {
-    public class UnInitalizedPersonsStrategy : IPersonsStrategy
+    internal sealed class UnInitalizedPersonsStrategy : IPersonsStrategy
     {
         [ThreadStatic]
         private static UnInitalizedPersonsStrategy instance;

@@ -17,7 +17,9 @@ namespace GuaranteedRate.Web.Controllers
         //Todo: Add DOC
         public RecordsController()
         {
+            // NOTE: In production code NEVER initalize in controller ctor.
             personsService = new PersonsService();
+            personsService.Initalize();
         }
 
         [HttpPost]
@@ -28,7 +30,6 @@ namespace GuaranteedRate.Web.Controllers
             try
             {
                 if (!ModelState.IsValid) return this.BadRequest("Model not valid.");
-
                 return this.personsService
                     .AddRecord(model)
                     ? (IHttpActionResult) this.Ok()

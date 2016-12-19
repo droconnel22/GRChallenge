@@ -24,12 +24,13 @@ namespace GuaranteedRate.Domain.Services
             this.persons = 
                 PersonsRestBuilder
                 .Initalize()
+                .LoadMockData()
                 .SetStrategyForPersons(new RestApiPersonsStrategy())
                 .Build();
         }
 
         public bool AddRecord(string model) => 
-            this.persons.AddPerson(PersonFactory.Create(model));
+            this.persons.AddPerson(PersonFactory.Create(model,'|'));
             
 
         public PersonsViewModel GetRecordsByGender() =>

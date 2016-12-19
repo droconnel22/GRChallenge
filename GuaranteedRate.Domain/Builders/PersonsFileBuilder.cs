@@ -1,34 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using GuaranteedRate.Domain.Builders.Extenstions;
 using GuaranteedRate.Domain.Builders.Interfaces;
 using GuaranteedRate.Domain.Builders.Strategies;
-using GuaranteedRate.Domain.Factories;
-using GuaranteedRate.Domain.Models.Person;
-using GuaranteedRate.Domain.Models.Persons;
-using GuaranteedRate.Domain.Models.Persons.Strategies;
+
 
 namespace GuaranteedRate.Domain.Builders
 {
     public class PersonsFileBuilder : 
-        IParseFromFileHolder, 
-        ISetPersonsStrategyHolder,
-        IPersonsBuilder
+        BasePersonsBuilder,
+        IParseFromFileHolder
     {
-        private IPersonsStrategy personsStrategy;
-
-        private IProcessFileStrategy _fileStrategy;
-
-        private IEnumerable<IPerson> loadedPersonCollection;
+       
+        private readonly IProcessFileStrategy fileStrategy;
 
         //Control Entry Point.
         private PersonsFileBuilder()
+            :base()
         {
-            this._fileStrategy = new ProcessMultipleFilesStrategy();
-            this.personsStrategy = UnInitalizedPersonsStrategy.SetInstance;
-            this.loadedPersonCollection = new List<IPerson>();
-          
+            this.fileStrategy = new ProcessMultipleFilesStrategy();
         }
 
         public static IParseFromFileHolder Initalize() => new PersonsFileBuilder();
@@ -36,28 +26,17 @@ namespace GuaranteedRate.Domain.Builders
         public IParseFromFileHolder SetRecordsFromFileWithDelimiter(string filePath, char deliminator)
         {
            if(!File.Exists(filePath)) throw new ArgumentException("File does not exist from " + filePath);
-           this._fileStrategy.AddFilePlan(filePath,deliminator);
+           this.fileStrategy.AddFilePlan(filePath,deliminator);
            return this;
         }
        
         public ISetPersonsStrategyHolder LoadFromFiles()
         {
-            this.loadedPersonCollection = 
-                this._fileStrategy
+            base.loadedPersonCollection = 
+                this.fileStrategy
                 .ReadAllFiles()
                 .InterpretLineToPerson();
             return this;
         }
-
-        public IPersonsBuilder SetStrategyForPersons(IPersonsStrategy personsStrategy)
-        {
-            //Here we request a reference type. We will not allow building for a null.
-            if(personsStrategy == null) throw new ArgumentNullException(nameof(personsStrategy));
-            this.personsStrategy = personsStrategy;
-            return this;
-        }
-
-        public IPersons Build() => 
-            new Persons(this.loadedPersonCollection, this.personsStrategy);
     }
 }

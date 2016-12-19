@@ -3,7 +3,7 @@ using GuaranteedRate.Domain.Models.Utility;
 
 namespace GuaranteedRate.Domain.Models.Person
 {
-    public sealed class Person : IPerson
+    internal sealed class Person : IPerson
     {
         public string LastName { get; }
         public string FirstName { get; }
@@ -13,11 +13,14 @@ namespace GuaranteedRate.Domain.Models.Person
 
         public Person(string lastName, string firstName, Genders gender, Colors favoriteColor, DateTime dateoFBirth)
         {
-            LastName = lastName;
-            FirstName = firstName;
-            Gender = gender;
-            FavoriteColor = favoriteColor;
-            DateoFBirth = dateoFBirth;
+            if(string.IsNullOrEmpty(lastName)) throw new ArgumentNullException(lastName);
+            if(string.IsNullOrEmpty(firstName)) throw new ArgumentNullException(firstName);
+
+            this.LastName = lastName;
+            this.FirstName = firstName;
+            this.Gender = gender;
+            this.FavoriteColor = favoriteColor;
+            this.DateoFBirth = dateoFBirth;
         }
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GuaranteedRate.Console.PresentationUtility;
 using GuaranteedRate.Domain.Builders;
 using GuaranteedRate.Domain.Models.Persons;
@@ -15,7 +11,6 @@ namespace GuaranteedRate.Console
         static void Main(string[] args)
         {
             if(args.Length != 3) throw new ArgumentException("Presenter requires 3 files.");
-
             Presentation.PrintHeaderText();
             IPersons persons = 
                 PersonsFileBuilder

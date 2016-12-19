@@ -5,7 +5,7 @@ using GuaranteedRate.Domain.Models.Person;
 
 namespace GuaranteedRate.Domain.Models.Persons.Strategies
 {
-    public class RestApiPersonsStrategy : IPersonsStrategy
+    public sealed class RestApiPersonsStrategy : IPersonsStrategy
     {
         //returns records sorted by gender
         public IEnumerable<IPerson> SetGenderAction(IPersons persons) =>

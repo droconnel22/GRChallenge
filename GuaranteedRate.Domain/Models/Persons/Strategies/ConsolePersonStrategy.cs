@@ -5,7 +5,7 @@ using GuaranteedRate.Domain.Models.Person;
 
 namespace GuaranteedRate.Domain.Models.Persons.Strategies
 {
-    public class ConsolePersonStrategy : IPersonsStrategy
+    public sealed class ConsolePersonStrategy : IPersonsStrategy
     {
         
         //sorted by gender (females before males) then by last name ascending.

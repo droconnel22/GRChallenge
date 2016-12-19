@@ -2,8 +2,8 @@
 
 namespace GuaranteedRate.Domain.Builders.Interfaces
 {
-    public interface IParseFromPostBodyHolder
+    public interface IParseFromMockDataHolder
     {
-        IPersons SetRecordFromPostBody(string model);
+        ISetPersonsStrategyHolder LoadMockData();
     }
 }

@@ -21,10 +21,7 @@ namespace GuaranteedRate.Domain.Factories
 
         };
 
-        internal static IPerson Create(string model)
-        {
-            throw new NotImplementedException();
-        }
+        internal static IPerson Create(string model,char deliminator) => CreatePerson(model.Split(deliminator));
 
 
         public static IEnumerable<IPerson> Create(IEnumerable<string[]> rawFileArray) => rawFileArray.Select(CreatePerson);

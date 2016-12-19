@@ -1,40 +1,32 @@
-﻿using GuaranteedRate.Domain.Builders.Interfaces;
-using GuaranteedRate.Domain.Models.Persons;
-using GuaranteedRate.Domain.Models.Persons.Strategies;
+﻿using System.Collections.Generic;
+using GuaranteedRate.Domain.Builders.Extenstions;
+using GuaranteedRate.Domain.Builders.Interfaces;
+using GuaranteedRate.Domain.Builders.Strategies;
+
 
 namespace GuaranteedRate.Domain.Builders
 {
-    public class PersonsRestBuilder
-        :IParseFromPostBodyHolder,
-            ISetPersonsStrategyHolder,
-            IPersonsBuilder
-        {
-
+    //Rest may require db access to some intializer, int his case we load mock data
+    public class PersonsRestBuilder : 
+        BasePersonsBuilder,
+        IParseFromMockDataHolder
+    {
+        private readonly IProcessRestStrategy processRestStrategy;
+        
         private PersonsRestBuilder()
+            :base()
         {
-            
+           this.processRestStrategy = new ProcessMockDataForRestStrategy();
         }
 
-        public static ISetPersonsStrategyHolder Initalize() => new PersonsRestBuilder();
+        public static IParseFromMockDataHolder Initalize() => new PersonsRestBuilder();
 
-        public IParseFromPostBodyHolder SetDeliminatorForPostBody(char deliminator)
+        public ISetPersonsStrategyHolder LoadMockData()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public IPersons SetRecordFromPostBody(string model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IPersonsBuilder SetStrategyForPersons(IPersonsStrategy personsStrategy)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IPersons Build()
-        {
-            throw new System.NotImplementedException();
+            this.loadedPersonCollection = 
+                this.processRestStrategy
+                .MockRepository();
+            return this;
         }
     }
 }

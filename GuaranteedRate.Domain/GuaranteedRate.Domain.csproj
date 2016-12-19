@@ -40,14 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\BasePersonsBuilder.cs" />
     <Compile Include="Builders\Extenstions\BuilderExtensions.cs" />
     <Compile Include="Builders\Interfaces\IParseFromFileHolder.cs" />
-    <Compile Include="Builders\Interfaces\IParseFromPostBodyHolder.cs" />
+    <Compile Include="Builders\Interfaces\IParseFromMockDataHolder.cs" />
     <Compile Include="Builders\Interfaces\ISetPersonsStrategyHolder.cs" />
     <Compile Include="Builders\Interfaces\IPersonsBuilder.cs" />
     <Compile Include="Builders\PersonsFileBuilder.cs" />
     <Compile Include="Builders\PersonsRestBuilder.cs" />
     <Compile Include="Builders\Strategies\IProcessFileStrategy.cs" />
+    <Compile Include="Builders\Strategies\IProcessRestStrategy.cs" />
+    <Compile Include="Builders\Strategies\ProcessMockDataForRestStrategy.cs" />
     <Compile Include="Factories\PersonFactory.cs" />
     <Compile Include="Builders\Strategies\ProcessMultipleFilesStrategy.cs" />
     <Compile Include="Models\Persons\EmptyPersons.cs" />
@@ -69,9 +72,7 @@
     <Compile Include="ViewModels\PersonsViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
