@@ -50,8 +50,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Domain\Services\PersonServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestUtility\PersonTestUtility.cs" />
+    <Compile Include="Web\RecordControllerTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GuaranteedRate.Domain\GuaranteedRate.Domain.csproj">
+      <Project>{92cdd48f-9e15-46b2-8a47-d86485f89367}</Project>
+      <Name>GuaranteedRate.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GuaranteedRate.Web\GuaranteedRate.Web.csproj">
+      <Project>{7a47e098-441d-4aff-b444-6161b31fd478}</Project>
+      <Name>GuaranteedRate.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\Builders\Strategies\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

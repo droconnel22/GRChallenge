@@ -21,15 +21,16 @@ namespace GuaranteedRate.Domain.Factories
 
         };
 
-        internal static IPerson Create(string model,char deliminator) => CreatePerson(model.Split(deliminator));
+        public static IPerson Create(string model,char deliminator) => CreatePerson(model?.Split(deliminator));
 
 
         public static IEnumerable<IPerson> Create(IEnumerable<string[]> rawFileArray) => rawFileArray.Select(CreatePerson);
 
-
+        /*You may assume that the delimiters (commas, pipes and spaces) do not appear anywhere in the data values themselves. */
         private static IPerson CreatePerson(string[] model)
         {
-            if (model.Length < 5) throw new ArgumentException(nameof(model));
+            if (model == null) throw new ArgumentNullException(nameof(model));
+            if (model.Length < 5) return EmptyPerson.GetInstance;
             return new Person(model[0], model[1], TranslateToGender(model[2]), TranslateToColor(model[3]), TranslateToDateTime(model[4]));
         }
 
@@ -66,4 +67,5 @@ namespace GuaranteedRate.Domain.Factories
             return result;
         }
     }
+   
 }

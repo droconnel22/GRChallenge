@@ -1,1 +1,3 @@
-Dennis O'Connell Male Blue 12/14/1986
+O'Connell Dennis Male Blue 12/14/1986
+Austen Jane Female Green 12/16/1775
+Nightingale Florence Female Yellow 12/13/1820

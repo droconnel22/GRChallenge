@@ -5,7 +5,7 @@ using GuaranteedRate.Domain.Models.Persons.Strategies;
 
 namespace GuaranteedRate.Domain.Models.Persons
 {
-    internal sealed class Persons : IPersons
+    public  sealed class Persons : IPersons
     {
         private readonly ICollection<IPerson> collection;
 

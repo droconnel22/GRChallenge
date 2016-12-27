@@ -21,6 +21,8 @@ namespace GuaranteedRate.Domain.Builders
             this.fileStrategy = new ProcessMultipleFilesStrategy();
         }
 
+      
+
         public static IParseFromFileHolder Initalize() => new PersonsFileBuilder();
 
         public IParseFromFileHolder SetRecordsFromFileWithDelimiter(string filePath, char deliminator)

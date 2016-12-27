@@ -12,16 +12,19 @@ namespace GuaranteedRate.Domain.Services
 {
     public class PersonsService : IPersonsService
     {
-        private IPersons persons;
+        public IPersons Persons { get; private set; }
 
+        private readonly IPersonsBuilder personsBuilder;
+                
         public PersonsService()
         {
-            this.persons = EmptyPersons.GetInstance;
+            this.Persons = EmptyPersons.GetInstance;                    
         }
+
 
         public void Initalize()
         {
-            this.persons = 
+            this.Persons =                 
                 PersonsRestBuilder
                 .Initalize()
                 .LoadMockData()
@@ -30,21 +33,21 @@ namespace GuaranteedRate.Domain.Services
         }
 
         public bool AddRecord(string model) => 
-            this.persons.AddPerson(PersonFactory.Create(model,'|'));
+            this.Persons.AddPerson(PersonFactory.Create(model,'|'));
             
 
         public PersonsViewModel GetRecordsByGender() =>
-            this.persons
+            this.Persons
                 .GetByGender()
                 .ToViewModel();
 
         public PersonsViewModel GetRecordsByBirthDate() =>
-            this.persons
+            this.Persons
                 .GetByBirthDate()
                 .ToViewModel();
 
         public PersonsViewModel GetRecordsByName() => 
-            this.persons
+            this.Persons
             .GetByLastName()
             .ToViewModel();
     }

@@ -3,7 +3,7 @@ using GuaranteedRate.Domain.Models.Utility;
 
 namespace GuaranteedRate.Domain.Models.Person
 {
-    internal sealed class Person : IPerson
+    public sealed class Person : IPerson
     {
         public string LastName { get; }
         public string FirstName { get; }

@@ -85,3 +85,15 @@ LastName FirstName Gender FavoriteColor DateOfBirth
         5.Build(); => builds person
 
 */
+
+Interesting issue is never had to represent BC dates before.
+
+Space deliminator will present challenges for multiple last names
+
+Write a program in a language of your choice to read in records from these files and combine them into a single set of records.
+
+
+
+So the instructions as for an API that can take a file, parse the records into person models and then apply stratgies. But what is interesting is that the program to be
+written includes a step to aggregate several records. The builder strategy gives us this flexibily we need to specifiy 1 to many files and create a fluent API that reads like a simple
+sentance.

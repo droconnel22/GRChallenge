@@ -14,6 +14,7 @@ namespace GuaranteedRate.Domain.Models.Utility
         Yellow,
         Purple,
         Violet,
-        Orange
+        Orange,
+        Brown
     }
 }

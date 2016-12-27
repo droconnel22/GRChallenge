@@ -19,7 +19,9 @@ namespace GuaranteedRate.Domain.Builders
            this.processRestStrategy = new ProcessMockDataForRestStrategy();
         }
 
-        public static IParseFromMockDataHolder Initalize() => new PersonsRestBuilder();
+        
+        public static IParseFromMockDataHolder Initalize() 
+            => new PersonsRestBuilder();
 
         public ISetPersonsStrategyHolder LoadMockData()
         {

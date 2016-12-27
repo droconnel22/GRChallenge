@@ -4,7 +4,7 @@ using GuaranteedRate.Domain.Models.Person;
 
 namespace GuaranteedRate.Domain.Models.Persons
 {
-    internal sealed class EmptyPersons : IPersons
+    public sealed class EmptyPersons : IPersons
     {
         [ThreadStatic]
         private static IPersons instance;
