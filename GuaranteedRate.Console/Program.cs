@@ -3,6 +3,7 @@ using GuaranteedRate.Console.PresentationUtility;
 using GuaranteedRate.Domain.Builders;
 using GuaranteedRate.Domain.Models.Persons;
 using GuaranteedRate.Domain.Models.Persons.Strategies;
+using GuaranteedRate.Domain.Builders.Strategies;
 
 namespace GuaranteedRate.Console
 {
@@ -14,7 +15,7 @@ namespace GuaranteedRate.Console
             Presentation.PrintHeaderText();
             IPersons persons = 
                 PersonsFileBuilder
-                .Initalize()
+                .Initalize(new ProcessMultipleFilesStrategy())
                 .SetRecordsFromFileWithDelimiter(args[0], ',')
                 .SetRecordsFromFileWithDelimiter(args[1], '|')
                 .SetRecordsFromFileWithDelimiter(args[2], ' ') 

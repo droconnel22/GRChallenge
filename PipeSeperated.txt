@@ -1,4 +1,4 @@
-Dennis|O'Connell|Male|Blue|12/14/1986
+O'Connell|Dennis|Male|Blue|12/14/1986
 Thatcher|Margaret|Female|Red|11/5/1925
 Bergman|Ingrid|Female|Orange|10/29/1915
 Dickinson|Emily|Female|Violet|12/10/1830

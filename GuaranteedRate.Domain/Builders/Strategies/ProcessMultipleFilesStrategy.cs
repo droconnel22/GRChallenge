@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace GuaranteedRate.Domain.Builders.Strategies
 {
-    internal class ProcessMultipleFilesStrategy : IProcessFileStrategy
+    public class ProcessMultipleFilesStrategy : IProcessFileStrategy
     {
         private ICollection<Tuple<string, char>> filePlans;
 

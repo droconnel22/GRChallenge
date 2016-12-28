@@ -2,7 +2,7 @@
 
 namespace GuaranteedRate.Domain.Builders.Strategies
 {
-    internal interface IProcessFileStrategy
+    public interface IProcessFileStrategy
     {
         void AddFilePlan(string filePath, char deliminator);
 

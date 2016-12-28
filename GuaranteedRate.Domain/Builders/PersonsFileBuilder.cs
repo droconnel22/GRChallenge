@@ -16,13 +16,15 @@ namespace GuaranteedRate.Domain.Builders
 
         //Control Entry Point.
         //Todo, outside scope, but in production Process Multiple Files Strategy would be Injected via IoC
-        private PersonsFileBuilder()
-            :base()
+        private PersonsFileBuilder(IProcessFileStrategy strategy)
+            :base() 
         {
-            this.fileStrategy = new ProcessMultipleFilesStrategy();
+            //Default
+            if (strategy == null) throw new ArgumentNullException(nameof(strategy));
+            this.fileStrategy = strategy;
         }      
 
-        public static IParseFromFileHolder Initalize() => new PersonsFileBuilder();
+        public static IParseFromFileHolder Initalize(IProcessFileStrategy strategy) => new PersonsFileBuilder(strategy);
 
         public IParseFromFileHolder SetRecordsFromFileWithDelimiter(string filePath, char deliminator)
         {
