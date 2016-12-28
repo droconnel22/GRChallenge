@@ -19,9 +19,7 @@ namespace GuaranteedRate.Domain.Builders
             :base()
         {
             this.fileStrategy = new ProcessMultipleFilesStrategy();
-        }
-
-      
+        }      
 
         public static IParseFromFileHolder Initalize() => new PersonsFileBuilder();
 

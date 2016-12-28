@@ -50,10 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Domain\Builders\PersonRestBuilderTests.cs" />
     <Compile Include="Domain\Services\PersonServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestUtility\PersonTestUtility.cs" />
-    <Compile Include="Web\RecordControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GuaranteedRate.Domain\GuaranteedRate.Domain.csproj">
@@ -67,6 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Builders\Strategies\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

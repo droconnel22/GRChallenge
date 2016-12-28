@@ -11,7 +11,7 @@ namespace GuaranteedRate.Domain.Services
     public interface IPersonsService
     {
         IPersons Persons { get; }
-        void Initalize();
+        void Initalize(Func<IPersons> initalizer);
      
         bool AddRecord(string model);
 

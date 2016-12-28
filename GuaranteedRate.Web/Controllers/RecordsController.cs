@@ -6,10 +6,12 @@ using System.Net.Http;
 using System.Web.Http;
 using GuaranteedRate.Domain.Services;
 using GuaranteedRate.Domain.ViewModels;
+using GuaranteedRate.Domain.Builders;
+using GuaranteedRate.Domain.Models.Persons.Strategies;
 
 namespace GuaranteedRate.Web.Controllers
 {
-    [RoutePrefix("records")]
+    [RoutePrefix("api/records")]
     public class RecordsController : ApiController
     {
         private readonly IPersonsService personsService;
@@ -17,13 +19,18 @@ namespace GuaranteedRate.Web.Controllers
         //Todo: Add DOC
         public RecordsController()
         {
-            // NOTE: In production code NEVER initalize in controller ctor.
-            personsService = new PersonsService();
-            personsService.Initalize();
+            this.personsService = new PersonsService();
+            this.personsService.Initalize(
+                () => 
+                PersonsRestBuilder
+                .Initalize()
+                .LoadMockData()
+                .SetStrategyForPersons(new RestApiPersonsStrategy())
+                .Build());      
         }
 
         [HttpPost]
-        [Route("POST")]
+       
         // POST api/records/
         public IHttpActionResult Post([FromBody] string model)
         {
@@ -42,15 +49,17 @@ namespace GuaranteedRate.Web.Controllers
         }
 
         [HttpGet]
+        [Route("Gender")]
         // GET api/records/gender
         public IHttpActionResult Gender() => this.Ok(this.personsService.GetRecordsByGender());
 
         [HttpGet]
         // GET api/records/birthdate
-       
+        [Route("BirthDate")]
         public IHttpActionResult BirthDate() => this.Ok(this.personsService.GetRecordsByBirthDate());
 
         [HttpGet]
+        [Route("Name")]
         // GET api/records/name
         public IHttpActionResult Name() => this.Ok(this.personsService.GetRecordsByName());
     }

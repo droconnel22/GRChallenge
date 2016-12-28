@@ -18,14 +18,15 @@ namespace GuaranteedRate.Tests.Domain.Services
         [TestInitialize]
         public void SetUp()
         {
-            this.personService = new PersonsService();            
+            this.personService = new PersonsService();
+            this.personService.Initalize(() => PersonTestUtility.GetSeededPersons());
         }
 
         [TestMethod]
         public void PersonService_WhenConstructedButNotInitlized_AlwaysReturns_EmptyInstanceOfPersons()
         {
-            var persons = this.personService.Persons;           
-            var personList = persons.GetPersons() as List<IPerson>;
+            var persons = new PersonsService();        
+            var personList = persons.Persons as List<IPerson>;
 
             Assert.IsTrue(persons is EmptyPersons);
             Assert.AreEqual(0, personList.Count);
@@ -34,8 +35,7 @@ namespace GuaranteedRate.Tests.Domain.Services
         [TestMethod]
         public void PersonService_WhenInitalized_WithConcreteMockFileBuilder_AlwaysReturns_PersonsWithMockData()
         {
-            this.personService.Initalize();
-
+            
             var result = this.personService.Persons;            
             var personList = result.GetPersons() as List<IPerson>;
 
@@ -47,7 +47,7 @@ namespace GuaranteedRate.Tests.Domain.Services
         public void PersonService_WhenGetRecordsByGender_AlwaysReturnsPersonsSortedByGender()
         {
             //Arrange
-            this.personService.Initalize();          
+           //Done in initalizer.         
 
             //Act
             var personRecordsByGenderResult = this.personService.GetRecordsByGender();
@@ -61,8 +61,7 @@ namespace GuaranteedRate.Tests.Domain.Services
         [TestMethod]
         public void PersonService_WhenGetRecordsByBirthDate_AlwaysReturns_PersonsSortedByBirthDate()
         {
-            this.personService.Initalize();
-
+           
             var personRecordsByBirthDateResult = this.personService.GetRecordsByBirthDate();
 
             Assert.IsTrue(personRecordsByBirthDateResult is PersonsViewModel);
@@ -72,8 +71,6 @@ namespace GuaranteedRate.Tests.Domain.Services
         [TestMethod]
         public void PersonsService_WhenGetRecordsByName_AlwaysReturns_PersonSortedByGroupedName()
         {
-            this.personService.Initalize();
-
             var personRecordsByNameResult = this.personService.GetRecordsByName();
 
             Assert.IsTrue(personRecordsByNameResult is PersonsViewModel);
@@ -83,8 +80,7 @@ namespace GuaranteedRate.Tests.Domain.Services
         [TestMethod]
         public void PersonService_WhenAdding_ValidPerson_AlwaysReturns_True()
         {
-            this.personService.Initalize();
-
+            
             bool result = this.personService.AddRecord(PersonTestUtility.GetValidPersonFromString());
 
             Assert.IsTrue(result);
@@ -94,8 +90,7 @@ namespace GuaranteedRate.Tests.Domain.Services
         [TestMethod]
         public void PersonService_WhenAdding_EmptyPerson_AlwaysReturns_False()
         {
-            this.personService.Initalize();
-
+            
             bool result = this.personService.AddRecord(PersonTestUtility.GetEmptyPersonFromString());
 
             Assert.IsFalse(result);        
@@ -105,9 +100,7 @@ namespace GuaranteedRate.Tests.Domain.Services
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void PersonService_WhenAdding_InvalidModel_AlwaysThrows_Exception()
-        {
-
-            this.personService.Initalize();          
+        {                  
             bool result = this.personService.AddRecord(null);
         }
     }

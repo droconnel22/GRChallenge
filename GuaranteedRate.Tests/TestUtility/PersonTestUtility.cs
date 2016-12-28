@@ -48,6 +48,14 @@ namespace GuaranteedRate.Tests.TestUtility
 
         public static string GetEmptyPersonFromString() => "O'Connell|Male|Blue|12/14/1986";
 
+        public static IPersons GetSeededPersons() => new Persons(new IPerson[4]
+            {
+              new Person("oconnell","dennis",Genders.Male, Colors.Blue,new DateTime(1986,12,14)),
+              new Person("solo","han",Genders.Male, Colors.Green,new DateTime(1977,5,7)),
+              new Person("organa","leia",Genders.Female, Colors.Violet,new DateTime(1977,5,8)),
+              new Person("mothma","mon",Genders.Female, Colors.Purple,new DateTime(1983,5,8))
+            }, null);
+
         public static void RunPersonsCompare(List<IPerson> expectedList, List<PersonViewModel> resultList)
         {
             for (int i = 0; i < resultList.Count; i++)

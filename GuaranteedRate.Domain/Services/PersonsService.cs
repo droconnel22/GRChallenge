@@ -7,6 +7,7 @@ using GuaranteedRate.Domain.Models.Persons;
 using GuaranteedRate.Domain.Models.Persons.Extensions;
 using GuaranteedRate.Domain.Models.Persons.Strategies;
 using GuaranteedRate.Domain.ViewModels;
+using System;
 
 namespace GuaranteedRate.Domain.Services
 {
@@ -22,14 +23,10 @@ namespace GuaranteedRate.Domain.Services
         }
 
 
-        public void Initalize()
+        public void Initalize(Func<IPersons> initalizer)
         {
-            this.Persons =                 
-                PersonsRestBuilder
-                .Initalize()
-                .LoadMockData()
-                .SetStrategyForPersons(new RestApiPersonsStrategy())
-                .Build();
+            this.Persons = initalizer();     
+               
         }
 
         public bool AddRecord(string model) => 
