@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.25920.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuaranteedRate.Web", "GuaranteedRate.Web\GuaranteedRate.Web.csproj", "{7A47E098-441D-4AFF-B444-6161B31FD478}"
 EndProject
@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{0782C8CB
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\..\Downloads\Guaranteed Rate Dev Candidate Homework.docx = ..\..\..\..\Downloads\Guaranteed Rate Dev Candidate Homework.docx
 		ReadMe.txt = ReadMe.txt
+		ScratchPad.txt = ScratchPad.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D3432CD8-B5AA-4537-B046-D750AB22ADDE}"

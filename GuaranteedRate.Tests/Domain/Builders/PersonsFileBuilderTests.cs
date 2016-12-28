@@ -43,10 +43,8 @@ namespace GuaranteedRate.Tests.Domain.Builders
 
         [TestMethod]
         public void PersonsFileBuilder_WhenInitalized_WithValidFileStrategy_Always_Returns_IParseFromFileHolderInterface()
-        {
-            var mockFileBuilder = MockRepository.GenerateMock<IProcessFileStrategy>();
-            var result = PersonsFileBuilder
-                .Initalize(mockFileBuilder);
+        {           
+            var result = this.initalizedPersonFileBuilder;
             Assert.IsTrue(result is IParseFromFileHolder);
         }
 
