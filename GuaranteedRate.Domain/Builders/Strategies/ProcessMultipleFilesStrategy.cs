@@ -20,6 +20,7 @@ namespace GuaranteedRate.Domain.Builders.Strategies
 
         public IEnumerable<string[]> ReadAllFiles()
         {
+            if (filePlans.Count == 0) throw new InvalidOperationException("No files have been specified");
             var result = new List<string[]>();
             foreach (var filePlan in filePlans)
             {

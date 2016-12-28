@@ -19,16 +19,16 @@ namespace GuaranteedRate.Tests.Domain.Services
         public void SetUp()
         {
             this.personService = new PersonsService();
-            this.personService.Initalize(() => PersonTestUtility.GetSeededPersons());
+            this.personService.Initalize(() => PersonTestUtility.GetSeededPersonsWithRestPersonsStrategy());
         }
 
         [TestMethod]
         public void PersonService_WhenConstructedButNotInitlized_AlwaysReturns_EmptyInstanceOfPersons()
         {
-            var persons = new PersonsService();        
-            var personList = persons.Persons as List<IPerson>;
+            var personService = new PersonsService();
+            var personList = personService.Persons.GetPersons().ToList();
 
-            Assert.IsTrue(persons is EmptyPersons);
+            Assert.IsTrue(personService.Persons is EmptyPersons);
             Assert.AreEqual(0, personList.Count);
         }
 

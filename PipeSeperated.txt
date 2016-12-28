@@ -1,1 +1,7 @@
 Dennis|O'Connell|Male|Blue|12/14/1986
+Thatcher|Margaret|Female|Red|11/5/1925
+Bergman|Ingrid|Female|Orange|10/29/1915
+Dickinson|Emily|Female|Violet|12/10/1830
+Henry|Patrick|Male|Green|5/29/1736
+Jay|John|Male|Brown|12/23/1745
+Adams|Samuel|Male|Blue|9/27/1722

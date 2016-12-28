@@ -7,13 +7,6 @@ Onassis,Jacqueline,Female,Green,10/1/1929
 Of Arc,Joane,Female,Red,6/1/1412
 Frank,Anne,Female,Green,7/21/1928
 Roosevelt,Eleanor,Female,Purple,10/11/1884
-Thatcher,Margaret,Female,Red,11/5/1925
-Bergman,Ingrid,Female,Orange,10/29/1915
-Dickinson,Emily,Female,Violet,12/10/1830
-Gabor,Zsa Zsa,Female,Blue,4/14/1917
-Anthony,Susan,Female,Red,8/6/1820
-Curie,Marie,Female,Green,6/3/1867
-Keller,Helen,Female,Brown,2/14/1880
 Earhart,Amelia,Female,Red,5/18/1897
 Parks,Rosa,Female,Violet,2/4/1913
 Magdale,Mary,Female,Green,1/1/1753
@@ -21,10 +14,3 @@ Wollstonecraft,Mary,Female,Purple,4/27/1759
 Washington,George,Male,Red,2/22/1732
 Jefferson,Thomas,Male,Blue,4/13/1743
 Franklin,Benjamin,Male,Green,1/17/1706
-Hamilton,Alexander,Male,Brown,1/11/1757
-Hancock,John,Male,Green,1/23/1737
-Revere,Paul,Male,Red,1/1/1735
-Paine,Thomas,Male,Blue,2/9/1737
-Henry,Patrick,Male,Green,5/29/1736
-Jay,John,Male,Brown,12/23/1745
-Adams,Samuel,Male,Blue,9/27/1722

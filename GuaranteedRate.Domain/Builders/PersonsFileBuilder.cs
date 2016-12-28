@@ -15,6 +15,7 @@ namespace GuaranteedRate.Domain.Builders
         private readonly IProcessFileStrategy fileStrategy;
 
         //Control Entry Point.
+        //Todo, outside scope, but in production Process Multiple Files Strategy would be Injected via IoC
         private PersonsFileBuilder()
             :base()
         {
